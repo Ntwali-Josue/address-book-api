@@ -1,9 +1,9 @@
 import mysql from 'mysql';
-import dbConfig from '../config/index'
+import dbConfig from '../config/index.js'
 
 
 // Creating a connection to the database
-const connection = mysql.createConnection({
+const sql = mysql.createConnection({
     host: dbConfig.HOST,
     user: dbConfig.USER,
     password: dbConfig.PASSWORD,
@@ -11,9 +11,9 @@ const connection = mysql.createConnection({
 });
 
 // open the MySQL connection
-connection.connect(error => {
+sql.connect(error => {
     if (error) throw error;
     console.log("Successfully connected to the database.");
 });
 
-module.exports = connection;
+export default sql;
