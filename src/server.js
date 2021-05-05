@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import routes from "./routes/index";
 
 const app = express();
 
@@ -12,6 +13,8 @@ app.get('/', (req, res) =>{
         "message": "Hi Josh"
     })
 })
+
+app.use(routes);
 
 const port = process.env.port || 5000
 app.listen(5000, () =>{
