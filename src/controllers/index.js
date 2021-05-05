@@ -1,4 +1,3 @@
-const Contact = require("../models/contacts.js");
 import Contact from "../database/models/contacts"
 
 // Create and Save a new Contact
@@ -11,14 +10,14 @@ exports.create = (req, res) => {
     }
   
     // Create a Customer
-    const customer = new Customer({
+    const contact = new Customer({
       email: req.body.email,
       name: req.body.name,
       active: req.body.active
     });
   
     // Save Customer in the database
-    Customer.create(customer, (err, data) => {
+    Customer.create(contact, (err, data) => {
       if (err)
         res.status(500).send({
           message:
