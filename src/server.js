@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import routes from "./routes/index";
+import router from "./routes/index.js";
 
 const app = express();
 
@@ -14,7 +14,7 @@ app.get('/', (req, res) =>{
     })
 })
 
-app.use(routes);
+app.use(router);
 
 const port = process.env.port || 5000
 app.listen(5000, () =>{
