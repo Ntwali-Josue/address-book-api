@@ -9,18 +9,18 @@ exports.create = (req, res) => {
         });
     }
 
-    // Create a Customer
-    const contact = new Customer({
+    // Create a Contact
+    const contact = new Contact({
         email: req.body.email,
         name: req.body.name,
         active: req.body.active
     });
 
-    // Save Customer in the database
-    Customer.create(contact, (err, data) => {
+    // Save Contact in the database
+    Contact.create(contact, (err, data) => {
         if (err)
             res.status(500).send({
-                message: err.message || "Some error occurred while creating the Customer."
+                message: err.message || "Some error occurred while creating the Contact."
             });
         else res.send(data);
     });
@@ -31,7 +31,7 @@ exports.findAll = (req, res) => {
     Contact.getAll((err, data) => {
         if (err)
             res.status(500).send({
-                message: err.message || "Some error occurred while retrieving customers."
+                message: err.message || "Some error occurred while retrieving contacts."
             });
         else res.send(data);
     });
@@ -39,15 +39,15 @@ exports.findAll = (req, res) => {
 
 // Find a single Contact with a contactId
 exports.findOne = (req, res) => {
-    Customer.findById(req.params.customerId, (err, data) => {
+    Contact.findById(req.params.contactId, (err, data) => {
         if (err) {
             if (err.kind === "not_found") {
                 res.status(404).send({
-                    message: `Not found Customer with id ${req.params.customerId}.`
+                    message: `Not found Contact with id ${req.params.contactId}.`
                 });
             } else {
                 res.status(500).send({
-                    message: "Error retrieving Customer with id " + req.params.customerId
+                    message: "Error retrieving Contact with id " + req.params.contactId
                 });
             }
         } else res.send(data);
