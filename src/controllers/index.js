@@ -84,8 +84,20 @@ exports.update = (req, res) => {
 
 // Delete a Contact with the specified contactId in the request
 exports.delete = (req, res) => {
-
-};
+    Contact.remove(req.params.contactId, (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found Contact with id ${req.params.contactId}.`
+          });
+        } else {
+          res.status(500).send({
+            message: "Could not delete Contact with id " + req.params.contactId
+          });
+        }
+      } else res.send({ message: `Contact was deleted successfully!` });
+    });
+  };
 
 // Delete all Contacts from the database.
 exports.deleteAll = (req, res) => {
