@@ -101,5 +101,12 @@ exports.delete = (req, res) => {
 
 // Delete all Contacts from the database.
 exports.deleteAll = (req, res) => {
-
-};
+    Contact.removeAll((err, data) => {
+      if (err)
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while removing all contacts."
+        });
+      else res.send({ message: `All Contacts were deleted successfully!` });
+    });
+  };
