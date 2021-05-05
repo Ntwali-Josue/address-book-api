@@ -1,4 +1,4 @@
-const sql = require("./index.js");
+import sql from "./index.js"
 
 // constructor
 const Contact = function(contact) {
@@ -108,4 +108,4 @@ Contact.removeAll = result => {
   });
 };
 
-module.exports = Contact;
+export default Contact;
