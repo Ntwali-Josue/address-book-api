@@ -29,8 +29,15 @@ exports.create = (req, res) => {
 
 // Retrieve all Contacts from the database.
 exports.findAll = (req, res) => {
-  
-};
+    Contact.getAll((err, data) => {
+      if (err)
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving customers."
+        });
+      else res.send(data);
+    });
+  };
 
 // Find a single Contact with a contactId
 exports.findOne = (req, res) => {
