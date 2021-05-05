@@ -56,8 +56,31 @@ exports.findOne = (req, res) => {
 
 // Update a Contact identified by the contactId in the request
 exports.update = (req, res) => {
-
-};
+    // Validate Request
+    if (!req.body) {
+      res.status(400).send({
+        message: "Content can not be empty!"
+      });
+    }
+  
+    Contact.updateById(
+      req.params.contactId,
+      new Contact(req.body),
+      (err, data) => {
+        if (err) {
+          if (err.kind === "not_found") {
+            res.status(404).send({
+              message: `Not found Contact with id ${req.params.contactId}.`
+            });
+          } else {
+            res.status(500).send({
+              message: "Error updating Contact with id " + req.params.contactId
+            });
+          }
+        } else res.send(data);
+      }
+    );
+  };
 
 // Delete a Contact with the specified contactId in the request
 exports.delete = (req, res) => {
