@@ -1,0 +1,33 @@
+{
+  "name": "address-book-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env NODE_ENV=development nodemon --exec babel-node  ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ntwali-Josue/address-book-api.git"
+  },
+  "author": "Josh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ntwali-Josue/address-book-api/issues"
+  },
+  "homepage": "https://github.com/Ntwali-Josue/address-book-api#readme",
+  "dependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.14.1",
+    "@babel/runtime": "^7.14.0",
+    "babel": "^6.23.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
